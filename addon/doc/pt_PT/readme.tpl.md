@@ -121,4 +121,18 @@ Além disso, se pressionasse o NVDA + f3 rapidamente, ouviria o início de cada 
 
 # ajudando a traduzir ou desenvolver o extra
 
-Se quiser ajudar a traduzir ou desenvolver o extra, aceda o [repositório do projeto](https://github.com/marlon-sousa/EnhancedFindDialog) e busque pelo arquivo contrib.md no diretório de documentação equivalente ao seu idioma.
+Se quiser ajudar a traduzir ou desenvolver o extra, aceda o [repositório do projeto](https://github.com/marlon-sousa/EnhancedFindDialog) e busque pelo arquivo contributing.md no diretório de documentação equivalente ao seu idioma.
+
+## Colaboradores
+
+Agradecimentos a:
+
+
+* Ângelo Miguel Abrantes - Tradução para Português
+* Rémy Ruiz - Tradução para Espanhol
+* Rémy Ruiz - Tradução para Francês
+* Tarik Hadžirović - Tradução para Croata
+*  Thiago Seus - Tradução para Português Brasileiro
+* Umut KORKMAZ - tradução para Turco
+* Valentin Kupriyanov - tradução para Russo
+* Ivan Shtefuriak - tradução Ucraniana

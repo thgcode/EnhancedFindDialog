@@ -130,5 +130,12 @@ If you want to contribute or translate this addon, please access the [project re
 
 Special thanks to
 
-*  Thiago Seus - Brazilian Portuguese translation
+
 * Ângelo Miguel Abrantes - Portuguese translation
+* Rémy Ruiz - French translation
+* Rémy Ruiz - Spanish translation
+* Tarik Hadžirović - Croatian translation
+*  Thiago Seus - Brazilian Portuguese translation
+* Umut KORKMAZ - Turkish translation
+* Valentin Kupriyanov - Russian translation
+* Ivan Shtefuriak - Ukrainian translation

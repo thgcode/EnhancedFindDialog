@@ -8,6 +8,8 @@ import addonHandler
 import config
 import core
 import cursorManager
+from . import cursorManagerHelper
+from gui import contextHelp
 import wx
 
 # this addon mostly complements NVDA functionalities.
@@ -64,19 +66,24 @@ def setConfig(profile, key, value):
 	profile[module][key] = value
 
 
-class EnhancedFindDialog(wx.Dialog):
+class EnhancedFindDialog(
+	contextHelp.ContextHelpMixin,
+	wx.Dialog
+):
 	"""A dialog used to specify text to find in a cursor manager.
 	"""
 
+	helpId = "SearchingForText"
+
 	def __init__(self, parent, cursorManager, profile, searchEntries):
 		# Translators: Title of a dialog to find text.
-		super(EnhancedFindDialog, self).__init__(parent, wx.ID_ANY, __("Find"))
+		super().__init__(parent, title=__("Find"))
 		# if checkboxes change during this dialog we need to save the profile with the new values
 		self._mustSaveProfile = False
 		# Have a copy of the active cursor manager, as this is needed later for finding text.
 		self.activeCursorManager = cursorManager
 		# have a copy of the profile active when this dialog was called
-		# this is needed because whenever the find dialog is opened the default probile is loaded. We, however, want to retrieve state from the active profile when the find dialog was loaded
+		# this is needed because whenever the find dialog is opened the default profile is loaded. We, however, want to retrieve state from the active profile when the find dialog was loaded
 		self.profile = profile
 		caseSensitivity = strToBool(getConfig(profile, "searchCaseSensitivity"))
 		searchWrap = strToBool(getConfig(profile, "searchWrap"))
@@ -113,6 +120,7 @@ class EnhancedFindDialog(wx.Dialog):
 		self.SetSizer(mainSizer)
 		self.CentreOnScreen()
 		self.findTextField.SetFocus()
+
 
 	def updateSearchEntries(self, searchEntries, currentSearchTerm):
 		if not currentSearchTerm:
@@ -155,7 +163,7 @@ class EnhancedFindDialog(wx.Dialog):
 
 		# We must use core.callLater rather than wx.CallLater to ensure that the callback runs within NVDA's core pump.
 		# If it didn't, and it directly or indirectly called wx.Yield, it could start executing NVDA's core pump from within the yield, causing recursion.
-		core.callLater(100, self.activeCursorManager.doFindText, text, caseSensitive=caseSensitive, searchWrap = searchWrap)
+		core.callLater(100, cursorManagerHelper.doFindText, self.activeCursorManager, text, caseSensitive=caseSensitive, searchWrap = searchWrap)
 		self.Destroy()
 
 	def onCancel(self, evt):
